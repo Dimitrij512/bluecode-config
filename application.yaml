@@ -1,0 +1,60 @@
+spring:
+  main:
+    banner-mode: OFF
+camel:
+  springboot:
+    use-mdc-logging: true
+logging:
+  config: "file:external-files/config/logback-spring.xml"
+server:
+  port : 8085
+empsa-transaction-api:
+  base-uri: "https://admin.empsa-bridge.spt-payments.biz/export-api/transactions"
+  acquirer-path: "/acquirer"
+  issuer-path: "/issuer"
+  transaction-count-path: "/count"
+  redelivery-delay: 1000
+  maximum-redeliveries: 5
+  back-off-multiplier: 2
+
+member:
+  configuration-file-path: "external-files/member/member.json"
+
+email-delivery:
+  smtp-host-port: "127.0.0.1:10022"
+  use-smtp-credentials: false
+  email-from: "smtpFrom@bc.com"
+  redelivery-delay: 200
+  maximum-redeliveries: 2
+  back-off-multiplier: 2
+  bcc-email: "control@bc.com"
+
+email-templates:
+  email-configurations-by-member-type:
+    ACQUIRER:
+      template-path: 'com/bluecode/empsa/settlement/template/email/AcquirerReportEmail.vm'
+      subject-template: 'EMPSA Settlement Bluecode Acquirer Transaction Report'
+    ISSUER:
+      template-path: 'com/bluecode/empsa/settlement/template/email/IssuerReportEmail.vm'
+      subject-template: 'EMPSA Settlement Bluecode Issuer Transaction Report'
+
+output:
+  base-output-folder: "out"
+  settlement-report-folder: "settlementReports"
+
+aws-s3:
+  region: "eu-central-1"
+  bucket: "empsa-bucket"
+
+sftp-redelivery:
+  redelivery-delay: 2
+  maximum-redeliveries: 2
+  back-off-multiplier: 2
+  maximum-redelivery-delay: 5
+
+archiving:
+  host: "localhost"
+  port: "22"
+  keyLocation: ""
+  application-root-directory: "empsa-settlement"
+  settlement-report-folder: "settlement-report"
