@@ -8,7 +8,7 @@ logging:
   config: "file:external-files/config/logback-spring.xml"
 
 empsa-transaction-api:
-  base-uri: "https://admin.empsa-bridge.spt-payments.biz/export-api/transactions"
+  base-uri: "https://admin.empsa-bridge.spt-payments.biz/export-api/transactions/d"
   acquirer-path: "/acquirer"
   issuer-path: "/issuer"
   transaction-count-path: "/count"
