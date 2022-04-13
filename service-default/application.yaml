@@ -6,8 +6,6 @@ camel:
     use-mdc-logging: true
 logging:
   config: "file:external-files/config/logback-spring.xml"
-server:
-  port : 9081
 
 empsa-transaction-api:
   base-uri: "https://admin.empsa-bridge.spt-payments.biz/export-api/transactions"
